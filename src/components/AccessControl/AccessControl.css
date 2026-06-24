@@ -1,0 +1,148 @@
+/* ============================================
+   ACCESS CONTROL — Password Lock Screen
+   ============================================ */
+.access-control {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background-color: #000000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  padding: 2rem;
+  font-family: var(--font-body);
+}
+
+/* Ambient glow */
+.access-control__glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 50vw;
+  height: 50vh;
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.05) 0%,
+    transparent 70%
+  );
+  filter: blur(80px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Card */
+.access-control__card {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 440px;
+  padding: 3rem 2.5rem;
+  background: rgba(255, 255, 255, 0.015);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-xl);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.access-control__label {
+  font-family: var(--font-heading);
+  font-size: 0.65rem;
+  font-weight: 800;
+  letter-spacing: 0.3em;
+  color: rgba(255, 255, 255, 0.4);
+  margin-bottom: 0.75rem;
+}
+
+.access-control__title {
+  font-family: var(--font-heading);
+  font-size: clamp(1.2rem, 4vw, 1.6rem);
+  font-weight: 900;
+  letter-spacing: 0.05em;
+  color: #ffffff;
+  margin-bottom: 1.2rem;
+}
+
+.access-control__desc {
+  font-size: var(--text-sm);
+  line-height: 1.6;
+  color: var(--color-text-secondary);
+  margin-bottom: 2rem;
+}
+
+/* Form */
+.access-control__form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.access-control__input-wrapper {
+  width: 100%;
+}
+
+.access-control__input {
+  width: 100%;
+  padding: 1rem 1.2rem;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-lg);
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.access-control__input::placeholder {
+  color: rgba(255, 255, 255, 0.3);
+}
+
+.access-control__input:focus {
+  outline: none;
+  background: rgba(255, 255, 255, 0.06);
+  border-color: #ffffff;
+  box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.1);
+}
+
+.access-control__input--error {
+  border-color: #ff3333 !important;
+  background: rgba(255, 51, 51, 0.05) !important;
+  box-shadow: 0 0 0 4px rgba(255, 51, 51, 0.15) !important;
+}
+
+.access-control__error-text {
+  font-size: 0.75rem;
+  color: #ff4444;
+  margin-top: -0.5rem;
+}
+
+.access-control__btn {
+  width: 100%;
+  padding: 1rem;
+}
+
+/* Footer info */
+.access-control__footer {
+  position: absolute;
+  bottom: 2rem;
+  font-family: var(--font-heading);
+  font-size: 0.55rem;
+  letter-spacing: 0.25em;
+  color: rgba(255, 255, 255, 0.25);
+  text-align: center;
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+@media (max-width: 480px) {
+  .access-control__card {
+    padding: 2.5rem 1.5rem;
+  }
+}

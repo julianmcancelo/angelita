@@ -302,9 +302,9 @@
    RESPONSIVE
    ============================================ */
 
-@media (max-width: 900px) {
+@media (max-width: 1024px) {
   .hero__side-nav {
-    right: 2rem;
+    display: none;
   }
 }
 
