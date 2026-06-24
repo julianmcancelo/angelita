@@ -1,0 +1,290 @@
+/* ============================================
+   ESCUCHAR SECTION
+   ============================================ */
+
+.escuchar {
+  position: relative;
+  overflow: hidden;
+  background: var(--color-bg-primary);
+  border-top: 1px solid rgba(255, 255, 255, 0.08); /* Minimal divider top border */
+}
+
+/* --- Background ambient glow --- */
+.escuchar__bg-glow {
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  width: 700px;
+  height: 700px;
+  transform: translateX(-50%);
+  background: radial-gradient(
+    circle,
+    rgba(139, 92, 246, 0.08) 0%,
+    rgba(233, 30, 140, 0.04) 40%,
+    transparent 70%
+  );
+  pointer-events: none;
+  z-index: 0;
+}
+
+.escuchar__content {
+  position: relative;
+  z-index: 1;
+}
+
+/* ---- Album Artwork Row ---- */
+.escuchar__albums {
+  display: flex;
+  justify-content: center;
+  gap: var(--space-2xl);
+  margin-bottom: var(--space-3xl);
+  perspective: 1200px; /* 3D perspective */
+}
+
+.escuchar__album-card {
+  position: relative;
+  width: 240px;
+  height: 240px;
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  cursor: pointer;
+  box-shadow: var(--shadow-lg);
+  flex-shrink: 0;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.escuchar__album-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  filter: grayscale(0.55) contrast(1.15) brightness(0.85); /* Cinematic desaturated look */
+  transition: filter var(--transition-base), transform var(--transition-base);
+}
+
+.escuchar__album-card:hover .escuchar__album-img {
+  filter: grayscale(0) contrast(1) brightness(1);
+}
+
+.escuchar__album-glow {
+  position: absolute;
+  inset: 0;
+  border-radius: var(--radius-xl);
+  background: linear-gradient(
+    180deg,
+    transparent 50%,
+    rgba(255, 255, 255, 0.08) 100%
+  );
+  opacity: 0;
+  transition: opacity var(--transition-base);
+  pointer-events: none;
+}
+
+.escuchar__album-card:hover .escuchar__album-glow {
+  opacity: 1;
+}
+
+/* Album Title Overlay inside Card */
+.escuchar__album-title {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: var(--space-lg) var(--space-sm) var(--space-md);
+  background: linear-gradient(
+    to top,
+    rgba(5, 5, 5, 0.95) 0%,
+    rgba(5, 5, 5, 0.5) 60%,
+    transparent 100%
+  );
+  color: var(--color-text-secondary);
+  font-family: var(--font-heading);
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-align: center;
+  letter-spacing: 0.08em;
+  transition: color var(--transition-base);
+}
+
+.escuchar__album-card:hover .escuchar__album-title {
+  color: #ffffff;
+}
+
+/* ---- Spotify Embeds ---- */
+.escuchar__embeds {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-xl);
+  margin-bottom: var(--space-3xl);
+}
+
+.escuchar__embed-wrapper {
+  padding: var(--space-lg);
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+}
+
+.escuchar__embed-label {
+  font-family: var(--font-heading);
+  font-size: var(--text-xs);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: #ffffff;
+  margin-bottom: var(--space-md);
+  background: none;
+  -webkit-text-fill-color: initial;
+  background-clip: initial;
+}
+
+.escuchar__embed-wrapper iframe {
+  display: block;
+  width: 100%;
+  border: none;
+}
+
+/* ---- Platforms ---- */
+.escuchar__platforms-heading {
+  font-family: var(--font-heading);
+  font-size: var(--text-2xl);
+  font-weight: 600;
+  text-align: center;
+  color: var(--color-text-primary);
+  margin-bottom: var(--space-2xl);
+  letter-spacing: -0.01em;
+}
+
+.escuchar__platforms {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-xl);
+  perspective: 1200px; /* 3D perspective */
+}
+
+.escuchar__platform-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-md);
+  padding: var(--space-2xl) var(--space-xl);
+  text-align: center;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius-xl);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  transition: all var(--transition-base);
+}
+
+.escuchar__platform-card:hover {
+  border-color: rgba(255, 255, 255, 0.35);
+  background: rgba(255, 255, 255, 0.02);
+  box-shadow: 0 4px 20px rgba(255, 255, 255, 0.05);
+}
+
+/* Icon */
+.escuchar__platform-icon-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  height: 60px;
+  border-radius: var(--radius-lg);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  transition: all var(--transition-base);
+}
+
+.escuchar__platform-card:hover .escuchar__platform-icon-wrapper {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.08);
+}
+
+.escuchar__platform-icon {
+  font-size: 1.8rem;
+  color: rgba(255, 255, 255, 0.7);
+  transition: all var(--transition-base);
+}
+
+.escuchar__platform-card:hover .escuchar__platform-icon {
+  transform: scale(1.1);
+  color: #ffffff;
+}
+
+/* Name & CTA */
+.escuchar__platform-name {
+  font-family: var(--font-heading);
+  font-size: var(--text-base);
+  font-weight: 700;
+  color: var(--color-text-primary);
+  letter-spacing: 0.05em;
+}
+
+.escuchar__platform-cta {
+  font-family: var(--font-body);
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transition: color var(--transition-fast);
+}
+
+.escuchar__platform-card:hover .escuchar__platform-cta {
+  color: #ffffff;
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+
+@media (max-width: 992px) {
+  .escuchar__embeds {
+    grid-template-columns: 1fr;
+  }
+
+  .escuchar__albums {
+    gap: var(--space-xl);
+  }
+
+  .escuchar__album-card {
+    width: 200px;
+    height: 200px;
+  }
+}
+
+@media (max-width: 768px) {
+  .escuchar__platforms {
+    grid-template-columns: 1fr;
+    gap: var(--space-lg);
+  }
+
+  .escuchar__albums {
+    gap: var(--space-lg);
+  }
+
+  .escuchar__album-card {
+    width: 160px;
+    height: 160px;
+  }
+
+  .escuchar__platforms-heading {
+    font-size: var(--text-xl);
+  }
+}
+
+@media (max-width: 480px) {
+  .escuchar__albums {
+    gap: var(--space-md);
+  }
+
+  .escuchar__album-card {
+    width: 140px;
+    height: 140px;
+  }
+
+  .escuchar__embed-wrapper {
+    padding: var(--space-md);
+  }
+}

@@ -1,0 +1,28 @@
+/* ============================================
+   APP-LEVEL STYLES
+   ============================================ */
+
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+}
+
+main {
+  flex: 1;
+}
+
+/* Smooth fade-in for page load */
+.app {
+  animation: appFadeIn 0.8s ease-out;
+}
+
+@keyframes appFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

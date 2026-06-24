@@ -1,0 +1,308 @@
+/* ============================================
+   ACERCA (ABOUT) — Styles
+   ============================================ */
+
+.acerca {
+  position: relative;
+  overflow: hidden;
+  background: var(--color-bg-secondary);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+
+
+/* --- Grid layout --- */
+.acerca__grid {
+  display: grid;
+  grid-template-columns: 2fr 3fr;
+  gap: var(--space-4xl);
+  align-items: center;
+}
+
+/* ========================================
+   LEFT COLUMN — Portrait
+   ======================================== */
+.acerca__image-col {
+  display: flex;
+  justify-content: center;
+}
+
+/* Container for the brutalist scrapbook collage */
+.acerca__collage {
+  position: relative;
+  width: 100%;
+  max-width: 440px;
+  height: 520px; /* Bounded height to contain the overlapping cards */
+  margin: 0 auto;
+}
+
+/* Individual scrapbook card */
+.acerca__collage-item {
+  position: absolute;
+  background: #ffffff;
+  padding: 5px;
+  border-radius: var(--radius-lg);
+  box-shadow: 8px 8px 0px rgba(255, 255, 255, 0.08);
+  transition: box-shadow 0.3s ease, filter 0.3s ease;
+  overflow: hidden;
+  cursor: pointer;
+  /* Monochromatic filter by default, recovers color on hover */
+  filter: grayscale(0.55) contrast(1.1) brightness(0.85);
+}
+
+.acerca__collage-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  border-radius: calc(var(--radius-lg) - 4px);
+}
+
+/* Coordinates to overlay cards asymmetrically */
+.acerca__collage-item--1 {
+  top: 0;
+  left: 0;
+  width: 58%;
+  height: 240px;
+  z-index: 1;
+}
+
+.acerca__collage-item--2 {
+  top: 40px;
+  right: 0;
+  width: 50%;
+  height: 220px;
+  z-index: 2;
+}
+
+.acerca__collage-item--3 {
+  bottom: 0;
+  left: 10px;
+  width: 54%;
+  height: 210px;
+  z-index: 3;
+}
+
+.acerca__collage-item--4 {
+  bottom: 30px;
+  right: 15px;
+  width: 48%;
+  height: 195px;
+  z-index: 2;
+}
+
+/* Hover effects */
+.acerca__collage-item:hover {
+  box-shadow: 12px 12px 0px rgba(255, 255, 255, 0.15);
+  filter: grayscale(0) contrast(1) brightness(1);
+}
+
+/* ========================================
+   RIGHT COLUMN — Bio Text
+   ======================================== */
+.acerca__text-col {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Real name (above the artist name) */
+.acerca__real-name {
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-bottom: var(--space-xs);
+}
+
+/* Artist name — white brutalist heading */
+.acerca__artist-name {
+  font-family: var(--font-heading);
+  font-size: var(--text-5xl);
+  font-weight: 900;
+  color: #ffffff;
+  background: none;
+  -webkit-text-fill-color: initial;
+  background-clip: initial;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+  margin-bottom: var(--space-xl);
+}
+
+/* Bio paragraphs */
+.acerca__bio {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+  margin-bottom: var(--space-2xl);
+}
+
+.acerca__bio p {
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  color: var(--color-text-secondary);
+  line-height: 1.8;
+}
+
+/* ========================================
+   STATS CARDS
+   ======================================== */
+.acerca__stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-lg);
+}
+
+.acerca__stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: var(--space-xl) var(--space-md);
+  cursor: default;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-xl);
+  transition: all var(--transition-base);
+}
+
+.acerca__stat:hover {
+  border-color: rgba(255, 255, 255, 0.35);
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.acerca__stat-icon {
+  font-size: var(--text-xl);
+  color: #ffffff;
+  margin-bottom: var(--space-sm);
+  opacity: 0.5;
+  transition: opacity var(--transition-base);
+}
+
+.acerca__stat:hover .acerca__stat-icon {
+  opacity: 1;
+}
+
+.acerca__stat-value {
+  font-family: var(--font-heading);
+  font-size: var(--text-2xl);
+  font-weight: 900;
+  color: #ffffff;
+  background: none;
+  -webkit-text-fill-color: initial;
+  background-clip: initial;
+  line-height: 1.2;
+  margin-bottom: var(--space-xs);
+}
+
+.acerca__stat-label {
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  letter-spacing: 0.05em;
+}
+
+/* ========================================
+   RESPONSIVE
+   ======================================== */
+
+/* Tablet */
+@media (max-width: 968px) {
+  .acerca__grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-3xl);
+  }
+
+  .acerca__image-col {
+    order: -1;
+  }
+
+  .acerca__collage {
+    max-width: 380px;
+    height: 460px;
+  }
+
+  .acerca__collage-item--1 { height: 210px; }
+  .acerca__collage-item--2 { height: 190px; }
+  .acerca__collage-item--3 { height: 180px; }
+  .acerca__collage-item--4 { height: 170px; }
+
+  .acerca__text-col {
+    align-items: center;
+    text-align: center;
+  }
+
+  .acerca__bio p {
+    max-width: 600px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .acerca__collage {
+    max-width: 320px;
+    height: 400px;
+  }
+
+  .acerca__collage-item--1 { height: 180px; }
+  .acerca__collage-item--2 { height: 160px; }
+  .acerca__collage-item--3 { height: 155px; }
+  .acerca__collage-item--4 { height: 145px; }
+
+  .acerca__artist-name {
+    font-size: var(--text-4xl);
+  }
+
+  .acerca__stats {
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-md);
+  }
+
+  .acerca__stat {
+    padding: var(--space-lg) var(--space-sm);
+  }
+
+  .acerca__stat-value {
+    font-size: var(--text-2xl);
+  }
+
+  .acerca__stat-label {
+    font-size: var(--text-xs);
+  }
+}
+
+/* Small mobile */
+@media (max-width: 480px) {
+  .acerca__grid {
+    gap: var(--space-2xl);
+  }
+
+  .acerca__collage {
+    max-width: 270px;
+    height: 340px;
+  }
+
+  .acerca__collage-item--1 { height: 150px; }
+  .acerca__collage-item--2 { height: 135px; }
+  .acerca__collage-item--3 { height: 130px; }
+  .acerca__collage-item--4 { height: 120px; }
+
+  .acerca__stats {
+    grid-template-columns: 1fr;
+    gap: var(--space-md);
+  }
+
+  .acerca__stat {
+    flex-direction: row;
+    gap: var(--space-md);
+    padding: var(--space-md) var(--space-lg);
+  }
+
+  .acerca__stat-icon {
+    margin-bottom: 0;
+    font-size: var(--text-lg);
+  }
+
+  .acerca__stat-value {
+    font-size: var(--text-2xl);
+  }
+}

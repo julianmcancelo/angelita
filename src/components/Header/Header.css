@@ -1,0 +1,264 @@
+/* ============================================
+   Header / Navbar
+   ============================================ */
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 90px;
+  z-index: 1000;
+  background: transparent;
+  transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.header--scrolled {
+  height: 70px;
+  background: rgba(10, 10, 15, 0.88);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.4);
+}
+
+/* Container */
+.header__container {
+  max-width: 100%;
+  margin: 0 auto;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 3rem;
+  position: relative;
+}
+
+/* Socials (Left) */
+.header__socials-left {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.header__social-link {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 1.05rem;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.header__social-link:hover {
+  color: #ffffff;
+  transform: translateY(-2px);
+}
+
+/* Logo (Center) */
+.header__logo-center {
+  font-family: var(--font-heading);
+  font-size: 1.15rem;
+  font-weight: 800;
+  letter-spacing: 0.2em;
+  color: #ffffff;
+  text-transform: uppercase;
+  cursor: pointer;
+  user-select: none;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  transition: opacity 0.3s ease;
+  white-space: nowrap;
+}
+
+.header__logo-center:hover {
+  opacity: 0.8;
+}
+
+/* Circular Hamburger Button (Right) */
+.header__hamburger-circle {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  color: #ffffff;
+  font-size: 1.35rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 1001;
+  transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.header__hamburger-circle:hover {
+  border-color: rgba(255, 255, 255, 0.45);
+  background: rgba(255, 255, 255, 0.08);
+  transform: scale(1.05);
+}
+
+/* ============================================
+   Mobile Fullscreen Menu
+   ============================================ */
+
+.mobile-menu {
+  position: fixed;
+  inset: 0;
+  z-index: 999;
+  background: rgba(5, 5, 10, 0.97);
+  backdrop-filter: blur(30px);
+  -webkit-backdrop-filter: blur(30px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+/* Close button */
+.mobile-menu__close {
+  position: absolute;
+  top: 1.25rem;
+  right: 1.5rem;
+  background: none;
+  border: none;
+  color: var(--color-text, #ffffff);
+  font-size: 2rem;
+  cursor: pointer;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.mobile-menu__close:hover {
+  color: #e91e8c;
+  transform: rotate(90deg);
+}
+
+/* Mobile Nav Links */
+.mobile-menu__nav {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.75rem;
+}
+
+.mobile-menu__link {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.75rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  color: rgba(255, 255, 255, 0.85);
+  text-transform: uppercase;
+  cursor: pointer;
+  position: relative;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.mobile-menu__link::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #e91e8c, #8b5cf6);
+  border-radius: 1px;
+  transition: width 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.mobile-menu__link:hover {
+  color: #e91e8c;
+  transform: scale(1.05);
+}
+
+.mobile-menu__link:hover::after {
+  width: 100%;
+}
+
+/* Social Icons */
+.mobile-menu__socials {
+  position: absolute;
+  bottom: 3rem;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.mobile-menu__social-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 1.15rem;
+  transition: all 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+  text-decoration: none;
+}
+
+.mobile-menu__social-icon:hover {
+  color: #ffffff;
+  border-color: #e91e8c;
+  background: rgba(233, 30, 140, 0.15);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(233, 30, 140, 0.25);
+}
+
+/* ============================================
+   Responsive Breakpoints
+   ============================================ */
+
+@media (max-width: 768px) {
+  .header {
+    height: 75px;
+  }
+  .header__container {
+    padding: 0 1.5rem;
+  }
+  .header__socials-left {
+    display: none; /* Hide top-left socials on mobile to prevent clutter */
+  }
+}
+
+@media (max-width: 480px) {
+  .header {
+    height: 65px;
+  }
+  .header__container {
+    padding: 0 1rem;
+  }
+
+  .header__logo-center {
+    font-size: 0.95rem;
+    letter-spacing: 0.15em;
+  }
+
+  .header__hamburger-circle {
+    width: 38px;
+    height: 38px;
+    font-size: 1.1rem;
+  }
+
+  .mobile-menu__link {
+    font-size: 1.4rem;
+    letter-spacing: 0.15em;
+  }
+
+  .mobile-menu__socials {
+    bottom: 2rem;
+    gap: 1rem;
+  }
+
+  .mobile-menu__social-icon {
+    width: 40px;
+    height: 40px;
+    font-size: 1rem;
+  }
+}
